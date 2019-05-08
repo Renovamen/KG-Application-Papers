@@ -87,7 +87,7 @@
 
 #### More Complex QA Tasks
 
-1. **Commonsense for Generative Multi-Hop Question Answering Tasks.** *Lisa Bauer, Yicheng Wang, and Mohit Bansal.* EMNLP 2018. [Paper](https://aclweb.org/anthology/D18-1454)
+1. **Commonsense for Generative Multi-Hop Question Answering Tasks.** *Lisa Bauer, Yicheng Wang, and Mohit Bansal.* EMNLP 2018. [[Paper]](https://aclweb.org/anthology/D18-1454) [[Code]](https://github.com/yicheng-w/CommonSenseMultiHopQA)
 2. **TEQUILA: Temporal Question Answering over Knowledge Bases.** *Zhen Jia, et al.* CIKM 2018. [Paper](http://qa.mpi-inf.mpg.de/tequila/p1807-jia.pdf)
 3. **Generating factoid questions with recurrent neural networks: The 30m factoid question-answer corpus.** *Iulian Vlad Serban, et al.* ACL 2016. [Paper](https://www.aclweb.org/anthology/P16-1056)
 4. **Transliteration Better than Translation? Answering Code-mixed Questions over a Knowledge Base.** *Vishal Gupta, Manoj Chinnakotla, and Manish Shrivastava.* CALCS 2018. [Paper](https://www.aclweb.org/anthology/W18-3205)
