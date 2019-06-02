@@ -24,9 +24,9 @@
 
 1. **Knowledge graph construction techniques. (Chinese)** *Qiao Liu, Yang Li, Hong Duan, Yao Liu, Zhiguang Qing.* Journal of Computer Research and Development (计算机研究与发展) 2016. [[Paper]](http://crad.ict.ac.cn/CN/abstract/abstract3127.shtml#)
 
-2. **Review on knowledge graph techniques.  (Chinese)** *Zenglin Xu, Yongpan Sheng, Lirong He, Yafang Wang.* Journal of University of Electronic Science and Technology of China (电子科技大学学报) 2016. [[Paper]](http://manu50.magtech.com.cn/dzkjdx/CN/article/downloadArticleFile.do?attachType=PDF&id=41)
+2. **Review on knowledge graph techniques.  (Chinese)** *Zenglin Xu, Yongpan Sheng, Lirong He, Yafang Wang.* Journal of University of Electronic Science and Technology of China (电子科技大学学报) 2016. [[Paper]](http://www.cnki.com.cn/Article/CJFDTotal-DKDX201604012.htm)
 
-3. **Architecture of Knowledge Graph Construction Techniques‖.** *Zhao, Zhanfang, Sung-Kook Han, and In-Mi So.* International Journal of Pure and Applied Mathematics 2018. [[Paper]](https://acadpubl.eu/jsi/2018-118-19/articles/19b/24.pdf)
+3. **Architecture of Knowledge Graph Construction Technique.** *Zhao, Zhanfang, Sung-Kook Han, and In-Mi So.* International Journal of Pure and Applied Mathematics 2018. [[Paper]](https://acadpubl.eu/jsi/2018-118-19/articles/19b/24.pdf)
 
 &nbsp;
 
@@ -61,7 +61,7 @@
 
 
 
-#### Information Retrieval Based
+#### Information Retrievaling Based
 
 1. **Information extraction over structured data: Question answering with freebase.** *Xuchen Yao, and Benjamin Van Durme.* ACl 2014. [[Paper]](http://cs.jhu.edu/~xuchen/paper/yao-jacana-freebase-acl2014.pdf)
 
