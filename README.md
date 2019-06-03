@@ -182,7 +182,7 @@
 
 2. **Image Classification**
 
-   **Knowledge Graph-Based Image Classification Refinement.** *Dehai Zhang, et al.* IEEE Access (2019). [[Paper]](https://ieeexplore.ieee.org/abstract/document/8698455)
+   **Knowledge Graph-Based Image Classification Refinement.** *Dehai Zhang, et al.* IEEE Access 2019. [[Paper]](https://ieeexplore.ieee.org/abstract/document/8698455)
 
 3. **Text Classification**
 
