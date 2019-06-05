@@ -48,7 +48,7 @@
 
 #### Industry
 
-1. **Building Watson: An overview of the DeepQA project.** *David Ferrucci, Eric Brown, Jennifer Chu-Carroll, et al.* AI magazine 2010. [[Paper]](https://www.aaai.org/ojs/index.php/aimagazine/article/view/2303/2165)
+1. **Building Watson: An overview of the DeepQA project.** *David Ferrucci, Eric Brown, Jennifer Chu-Carroll, et al.* AI Magazine 2010. [[Paper]](https://www.aaai.org/ojs/index.php/aimagazine/article/view/2303/2165)
 
 2. **The Design and Implementation of XiaoIce, an Empathetic Social Chatbot.** *Li Zhou, Jianfeng Gao, Di Li, Heung-Yeung Shum.* arXiv 2018. [[Paper]](https://arxiv.org/pdf/1812.08989.pdf)
 
@@ -78,10 +78,13 @@
 
 #### Deep Learning
 
-1. **Question answering over freebase with multi-column convolutional neural networks.** *Li Dong, et al.* ACL IJCNLP 2015. [[Paper]](https://www.aclweb.org/anthology/P15-1026)
+1. **Question answering over freebase with multi-column convolutional neural networks.** *Li Dong, et al.* IJCNLP 2015. [[Paper]](https://www.aclweb.org/anthology/P15-1026)
 2. **An end-to-end model for question answering over knowledge base with cross-attention combining global knowledge.** *Yanchao Hao, et al.* ACL 2017. [[Paper]](https://www.aclweb.org/anthology/P17-1021)
-3. **Semantic parsing via staged query graph generation: Question answering with knowledge base.** *Scott Wen-tau Yih, et al.* ACL IJCNLP 2015. [[Paper]](https://www.aclweb.org/anthology/P15-1128)
+3. **Semantic parsing via staged query graph generation: Question answering with knowledge base.** *Scott Wen-tau Yih, et al.* IJCNLP 2015. [[Paper]](https://www.aclweb.org/anthology/P15-1128)
 4. **Question answering over knowledge base with neural attention combining global knowledge information.** *Yuanzhe Zhang, et al.* ACL 2016. [[Paper]](https://arxiv.org/pdf/1606.00979.pdf)
+5. **A knowledge-grounded neural conversation model.** *Marjan Ghazvininejad, et al.* AAAI 2018. [[Paper]](https://www.microsoft.com/en-us/research/wp-content/uploads/2017/02/A_Knowledge_Grounded_Neural_Conversation_Model.pdf)
+
+6. **Key-value memory networks for directly reading documents.** *Alexander Miller, et al.* ACL 2016. [[Paper]](https://aclweb.org/anthology/D16-1147)
 
 
 
@@ -91,6 +94,7 @@
 2. **TEQUILA: Temporal Question Answering over Knowledge Bases.** *Zhen Jia, et al.* CIKM 2018. [[Paper]](http://qa.mpi-inf.mpg.de/tequila/p1807-jia.pdf)
 3. **Generating factoid questions with recurrent neural networks: The 30m factoid question-answer corpus.** *Iulian Vlad Serban, et al.* ACL 2016. [[Paper]](https://www.aclweb.org/anthology/P16-1056)
 4. **Transliteration Better than Translation? Answering Code-mixed Questions over a Knowledge Base.** *Vishal Gupta, Manoj Chinnakotla, and Manish Shrivastava.* CALCS 2018. [[Paper]](https://www.aclweb.org/anthology/W18-3205)
+5. **KG^ 2: Learning to Reason Science Exam Questions with Contextual Knowledge Graph Embeddings.** *Yuyu Zhang, et al.* arXiv 2018. [[Paper]](https://arxiv.org/pdf/1805.12393.pdf)
 
 &nbsp;
 
@@ -101,7 +105,7 @@
 1. **DKN: Deep knowledge-aware network for news recommendation.** *Hongwei Wang, et al.* WWW 2018. [[Paper]](https://arxiv.org/pdf/1801.08284.pdf)
 2. **Collaborative knowledge base embedding for recommender systems.** *Fuzheng Zhang, et al.* KDD 2016. [[Paper]](https://www.kdd.org/kdd2016/papers/files/adf0066-zhangA.pdf)
 
-3. **Shine: Signed heterogeneous information network embedding for sentiment link prediction.** *Hongwei Wang, et al.* ACM WSDM 2018. [[Paper]](https://arxiv.org/pdf/1712.00732.pdf)
+3. **Shine: Signed heterogeneous information network embedding for sentiment link prediction.** *Hongwei Wang, et al.* WSDM 2018. [[Paper]](https://arxiv.org/pdf/1712.00732.pdf)
 
 4. **Multi-Task Feature Learning for Knowledge Graph Enhanced Recommendation.** *Hongwei Wang, et al.* WWW 2019. [[Paper]](https://arxiv.org/pdf/1901.08907.pdf) [[Code]](https://github.com/hwwang55/MKR)
 
@@ -111,11 +115,11 @@
 
 #### Path Based
 
-1. **Personalized entity recommendation: A heterogeneous information network approach.** *Xiao Yu, et al.* WSDM 2014. [Paper](http://hanj.cs.illinois.edu/pdf/wsdm14_xyu.pdf)
+1. **Personalized entity recommendation: A heterogeneous information network approach.** *Xiao Yu, et al.* WSDM 2014. [[Paper]](http://hanj.cs.illinois.edu/pdf/wsdm14_xyu.pdf)
 
-2. **Meta-graph based recommendation fusion over heterogeneous information networks.** *Huan Zhao, et al.* KDD 2017. [Paper](http://www.cse.ust.hk/~yqsong/papers/2017-KDD-HINRec-FMG.pdf)
+2. **Meta-graph based recommendation fusion over heterogeneous information networks.** *Huan Zhao, et al.* KDD 2017. [[Paper]](http://www.cse.ust.hk/~yqsong/papers/2017-KDD-HINRec-FMG.pdf)
 
-3. **Explainable Reasoning over Knowledge Graphs for Recommendation.** *Xiang Wang, et al.* AAAI 2019. [Paper](https://arxiv.org/pdf/1811.04540.pdf)
+3. **Explainable Reasoning over Knowledge Graphs for Recommendation.** *Xiang Wang, et al.* AAAI 2019. [[Paper]](https://arxiv.org/pdf/1811.04540.pdf)
 
 
 
@@ -123,6 +127,27 @@
 
 1. **RippleNet: Propagating user preferences on the knowledge graph for recommender systems.** *Hongwei Wang, et al.* CIKM 2018. [[Paper]](https://arxiv.org/pdf/1803.03467.pdf) [[Code]](https://github.com/hwwang55/RippleNet)
 2. **Unifying Knowledge Graph Learning and Recommendation: Towards a Better Understanding of User Preferences.** WWW 2019. [[Paper]](https://arxiv.org/pdf/1902.06236.pdf)
+
+&nbsp;
+
+### Information Retrieval
+
+1. **Entity query feature expansion using knowledge base links.** *Jeffrey Dalton, Laura Dietz, and James Allan.* SIGIR 2014. [[Paper]](https://ciir-publications.cs.umass.edu/pub/web/getpdf.php?id=1143)
+
+2. **Latent entity space: a novel retrieval approach for entity-bearing queries.** *Xitong Liu, and Hui Fang.* Information Retrieval Journal 2015. [[Paper]](https://link.springer.com/article/10.1007/s10791-015-9267-x)
+
+3. **Esdrank: Connecting query and documents through external semi-structured data.** *Chenyan Xiong, and Jamie Callan.* CIKM 2015. [[Paper]](https://www.cs.cmu.edu/~callan/Papers/cikm15-cx.pdf)
+
+4. **Word-entity duet representations for document ranking.** *Chenyan Xiong, Jamie Callan, and Tie-Yan Liu.* SIGIR 2017. [[Paper]](https://arxiv.org/pdf/1706.06636.pdf)
+
+5. **Bag-of-Entities representation for ranking.** *Chenyan Xiong, Jamie Callan, and Tie-Yan Liu.* ICTIR 2016. [[Paper]](http://www.cs.cmu.edu/~cx/papers/Bag_of_Entities_Representation_for_Ranking.pdf)
+
+6. **Document retrieval using entity-based language models.** *Hadas Raviv, Oren Kurland, and David Carmel.* SIGIR 2016. [[Paper]](https://iew3.technion.ac.il/~kurland/p65-raviv.pdf)
+
+7. **Document retrieval model through semantic linking.** *Faezeh Ensan, and Ebrahim Bagheri.* WSDM 2017. [[Paper]](https://dl.acm.org/citation.cfm?id=3018692)
+
+8. **Entity-Duet Neural Ranking: Understanding the Role of Knowledge Graph Semantics in Neural Information Retrieval.** *Zhenghao Liu, et al.* ACL 2018. [[Paper]](https://aclweb.org/anthology/P18-1223) [[Code]](https://github.com/thunlp/EntityDuetNeuralRanking)
+9. **Explicit semantic ranking for academic search via knowledge graph embedding.** *Chenyan Xiong, Russell Power, and Jamie Callan.* WWW 2017. [[Paper]](https://ai2-website.s3.amazonaws.com/publications/Explicit_Semantic_Ranking.pdf)
 
 &nbsp;
 
@@ -148,7 +173,7 @@
 1. **Combining Enterprise Knowledge Graph and News Sentiment Analysis for Stock Price Volatility Prediction.** *Jue Liu, Zhuocheng Lu, and Wei Du.* HICSS 2019. [[Paper]](https://scholarspace.manoa.hawaii.edu/bitstream/10125/59565/0125.pdf)
 2. **Cyber incident classifications using ontology-based knowledge representation for cybersecurity insurance in financial industry.** *Sam Adam Elnagdy, Meikang Qiu, and Keke Gai.* CSCloud 2016. [[Paper]](https://ieeexplore.ieee.org/abstract/document/7545936/)
 3. **Understanding taxonomy of cyber risks for cybersecurity insurance of financial industry in cloud computing.** *Sam Adam Elnagdy, Meikang Qiu, and Keke Gai.* CSCloud 2016. [[Paper]](https://ieeexplore.ieee.org/abstract/document/7545935/)
-4. **Constructing Knowledge Graphs with Trust.** *Brian Ulicny.* METHOD2015. [[Paper]](https://www.researchgate.net/profile/Brian_Ulicny/publication/283500696_Constructing_Knowledge_Graphs_with_Trust/links/563b657308ae45b5d2867e2e.pdf)
+4. **Constructing Knowledge Graphs with Trust.** *Brian Ulicny.* METHOD 2015. [[Paper]](https://www.researchgate.net/profile/Brian_Ulicny/publication/283500696_Constructing_Knowledge_Graphs_with_Trust/links/563b657308ae45b5d2867e2e.pdf)
 
 #### News
 
@@ -184,7 +209,7 @@
 
    **Knowledge Graph-Based Image Classification Refinement.** *Dehai Zhang, et al.* IEEE Access 2019. [[Paper]](https://ieeexplore.ieee.org/abstract/document/8698455)
 
-3. **Text Classification**
+3. **Text Classification**  
 
    **Combining Knowledge with Deep Convolutional Neural Networks for Short Text Classification.** *Jin Wang, et al.* IJCAI 2017. [[Paper]](https://www.ijcai.org/proceedings/2017/0406.pdf)
 
