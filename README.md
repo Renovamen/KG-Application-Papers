@@ -190,6 +190,12 @@
 
 2. **Intelligent learning for knowledge graph towards geological data.** *Yueqin Zhu, et al.* Scientific Programming 2017. [[Paper]](https://www.hindawi.com/journals/sp/2017/5072427/)
 
+### Education
+
+1. **KnowEdu: A System to Construct Knowledge Graph for Education.** *Penghe Chen, et al.* IEEE Access 2018. [[Paper]](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8362657&tag=1)
+2. **Knowledge graph-based teacher support for learning material authoring.** *Christian Grévisse, et al.* CCC 2018. [[Paper]](https://link.springer.com/chapter/10.1007/978-3-319-98998-3_14)
+3. **Visualization for Knowledge Graph Based on Education Data.** *Kai Sun, et al.* IJSI 2016. [[Paper]](http://ijsi.alljournals.cn/ch/reader/create_pdf.aspx?file_no=i227&flag=1&journal_id=ijsi&year_id=2016)
+
 &nbsp;
 
 ### Other Applications
