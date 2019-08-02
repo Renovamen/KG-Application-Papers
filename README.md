@@ -119,7 +119,7 @@
 
 2. **Meta-graph based recommendation fusion over heterogeneous information networks.** *Huan Zhao, et al.* KDD 2017. [[Paper]](http://www.cse.ust.hk/~yqsong/papers/2017-KDD-HINRec-FMG.pdf)
 
-3. **Explainable Reasoning over Knowledge Graphs for Recommendation.** *Xiang Wang, et al.* AAAI 2019. [[Paper]](https://arxiv.org/pdf/1811.04540.pdf)
+3. **Explainable Reasoning over Knowledge Graphs for Recommendation.** *Xiang Wang, et al.* AAAI 2019. [[Paper]](https://arxiv.org/pdf/1811.04540.pdf) [[Code]](https://github.com/eBay/KPRN)
 
 
 
@@ -190,7 +190,7 @@
 
 2. **Intelligent learning for knowledge graph towards geological data.** *Yueqin Zhu, et al.* Scientific Programming 2017. [[Paper]](https://www.hindawi.com/journals/sp/2017/5072427/)
 
-### Education
+#### Education
 
 1. **KnowEdu: A System to Construct Knowledge Graph for Education.** *Penghe Chen, et al.* IEEE Access 2018. [[Paper]](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8362657&tag=1)
 2. **Knowledge graph-based teacher support for learning material authoring.** *Christian Grévisse, et al.* CCC 2018. [[Paper]](https://link.springer.com/chapter/10.1007/978-3-319-98998-3_14)
