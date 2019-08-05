@@ -1,6 +1,8 @@
 # A Survey on Application of Knowledge Graph
 
+[Better View](https://renovamen.github.io/KG-Application-Papers/)
 
+&nbsp;
 
 ## Knowledge Bases
 
@@ -12,7 +14,7 @@
 
    **Yago: A large ontology from wikipedia and wordnet.** *Fabian M. Suchanek, Gjergji Kasneci, and Gerhard Weikum.* Web Semantics: Science, Services and Agents on the World Wide Web 2008. [[Paper]](https://www.sciencedirect.com/science/article/pii/S1570826808000437)
 
-3. **Wikidata** https://www.wikidata.org/wiki/Wikidata:Main_Page
+3. **Wikidata** [[Website]](https://www.wikidata.org/wiki/Wikidata:Main_Page)
 
 4. **Freebase**
 
