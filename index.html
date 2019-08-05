@@ -1,0 +1,1323 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <title>A Survey on Application of Knowledge Graph</title>
+    <link href='https://raw.githubusercontent.com/slashfoo/lmweb/master/style/latinmodern-mono-light.css' rel='stylesheet' type='text/css' />
+    <style type='text/css'>
+    html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        bottom: 0px;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        font-size: 1rem;
+        line-height: 1.42857143;
+        overflow-x: hidden;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        tab-size: 4;
+        background-position: inherit inherit;
+        background-repeat: inherit inherit;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active,
+    a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection,
+    ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        word-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 40px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p,
+    #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line,
+    .typora-export li,
+    .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li>figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol,
+    #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-variant-caps: inherit;
+        font-weight: inherit;
+        font-stretch: inherit;
+        line-height: inherit;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1,
+    #write h2,
+    #write h3,
+    #write h4,
+    #write h5,
+    #write h6,
+    #write p,
+    #write pre {
+        width: inherit;
+    }
+
+    #write h1,
+    #write h2,
+    #write h3,
+    #write h4,
+    #write h5,
+    #write h6,
+    #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 2;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block,
+    .md-rawblock,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.701961);
+        color: rgb(85, 85, 85);
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a,
+    sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure>table {
+        margin: 0px !important;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right-width: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {}
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        position: relative !important;
+        background-position: inherit inherit;
+        background-repeat: inherit inherit;
+    }
+
+    .md-diagram-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line,
+    twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes+.footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+        background-position: 0px 0px;
+        background-repeat: initial initial;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block,
+    li p {
+        margin: 0.5rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote> :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote> :first-child,
+    li> :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+
+        body,
+        html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid-page;
+            break-before: avoid-page;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        html.blink-to-pdf {
+            font-size: 13px;
+        }
+
+        .typora-export #write {
+            padding-left: 32px;
+            padding-right: 32px;
+            padding-bottom: 0px;
+            break-after: avoid-page;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img,
+    img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background-color: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+        background-position: initial initial;
+        background-repeat: initial initial;
+    }
+
+    p>.md-image:only-child:not(.md-img-error) img,
+    p>img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    p>.md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    [contenteditable="true"]:active,
+    [contenteditable="true"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item>input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after,
+    .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code,
+    pre,
+    samp,
+    tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+        background-position: initial initial;
+        background-repeat: initial initial;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.8;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border: none !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        text-shadow: initial !important;
+        background-position: 0px 0px !important;
+        background-repeat: initial initial !important;
+    }
+
+    .md-inline-math .MathJax_SVG .noError {
+        display: none !important;
+    }
+
+    .html-for-mac .inline-math-svg .MathJax_SVG {
+        vertical-align: 0.2px;
+    }
+
+    .md-math-block .MathJax_SVG_Display {
+        text-align: center;
+        margin: 0px;
+        position: relative;
+        text-indent: 0px;
+        max-width: none;
+        max-height: none;
+        min-height: 0px;
+        min-width: 100%;
+        width: auto;
+        overflow-y: hidden;
+        display: block !important;
+    }
+
+    .MathJax_SVG_Display,
+    .md-inline-math .MathJax_SVG_Display {
+        width: auto;
+        margin: inherit;
+        display: inline-block !important;
+    }
+
+    .MathJax_SVG .MJX-monospace {
+        font-family: var(--monospace);
+    }
+
+    .MathJax_SVG .MJX-sans-serif {
+        font-family: sans-serif;
+    }
+
+    .MathJax_SVG {
+        display: inline;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        zoom: 90%;
+        text-indent: 0px;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: normal;
+        word-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        float: none;
+        direction: ltr;
+        max-width: none;
+        max-height: none;
+        min-width: 0px;
+        min-height: 0px;
+        border: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .MathJax_SVG * {
+        transition: none;
+    }
+
+    .MathJax_SVG_Display svg {
+        vertical-align: middle !important;
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel>svg {
+        max-width: 100%;
+    }
+
+    [lang="mermaid"] svg,
+    [lang="flow"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom-width: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td,
+    .highlight tr {
+        border: 0px;
+    }
+
+
+    :root {
+        --side-bar-bg-color: white;
+        --window-border: none;
+        --search-select-bg-color: #575c61;
+        --active-file-bg-color: #f1f4f5;
+        --item-hover-bg-color: #f1f4f5;
+        --item-hover-text-color: black;
+        --control-text-color: #555;
+    }
+
+    @include-when-export url(https://raw.githubusercontent.com/slashfoo/lmweb/master/style/latinmodern-mono-light.css);
+
+    html {
+        font-size: 12pt;
+    }
+
+    #write {
+        font-family: "STIX2Text", "Times New Roman", "serif";
+        line-height: 1.5em;
+        padding: 10%;
+        padding-top: 5%;
+    }
+
+    .file-list-item-summary {
+        height: 36px;
+    }
+
+    .file-list-item {
+        padding-top: 18px !important;
+        padding-bottom: 18px;
+    }
+
+    #sidebar-loading-template.file-list-item {
+        padding-top: 0 !important;
+    }
+
+    a,
+    a:visited {
+        color: #a00;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: inherit;
+        line-height: 1.5em;
+        margin-bottom: 1em;
+        margin-top: 1em;
+    }
+
+    h1 {
+        font-size: 2.4em;
+    }
+
+    #write h1 {
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 1.4em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+    }
+
+    h5 {
+        font-size: 1.1em;
+    }
+
+    h6 {
+        font-size: 1em;
+    }
+
+    p {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        text-align: justify;
+    }
+
+    pre,
+    code {
+        font-family: 'Latin Modern Mono Light', "Latin Modern Mono", monospace !important;
+    }
+
+    .footnotes {
+        display: list-item;
+        margin-left: 1em;
+    }
+
+    .md-fences {
+        border: 1px solid;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        border: none;
+    }
+
+    .CodeMirror-linenumber {
+        color: #333;
+    }
+
+    *.in-text-selection,
+    ::selection,
+    .CodeMirror-selected {
+        background: var(--search-select-bg-color);
+        color: var(--search-select-text-color) !important;
+        text-shadow: none;
+    }
+
+    a.md-toc-inner {
+        color: var(--text-color);
+    }
+
+    .cm-s-typora-default .cm-link {
+        color: #a00;
+        text-decoration: underline;
+    }
+
+    .cm-s-typora-default .cm-header,
+    .cm-s-typora-default .cm-property {
+        color: black;
+    }
+
+    #typora-source .CodeMirror-lines {
+        -webkit-font-smoothing: auto;
+        max-width: 1000px;
+    }
+
+    .md-def-name:before,
+    .md-def-name:after {
+        color: #2d2d2d;
+    }
+
+    sup.md-footnote {
+        background-color: initial;
+        color: inherit;
+    }
+
+    mark {
+        background: #fff387;
+    }
+
+    td,
+    th {
+        border: 1px solid;
+        padding-left: 1ch;
+        padding-right: 1ch;
+    }
+
+    /*table tr[cid]:first-child > td {
+    border-top: 3px double;
+}*/
+
+    th {
+        border-bottom: 0;
+        padding-top: 2px;
+        background: #575c61;
+        border-color: #333;
+        color: #f3f3f3;
+    }
+
+    pre.md-meta-block {
+        border: 1px solid #a2a9b1;
+        background-color: #f8f9fa;
+        padding: 5px;
+        margin-bottom: 1em;
+    }
+
+    .task-list-item input:before {
+        content: '\221A';
+        display: inline-block;
+        width: 1.25rem;
+        height: 1.6rem;
+        vertical-align: middle;
+        text-align: center;
+        color: #bbb;
+        background-color: inherit;
+    }
+
+    .task-list-item input:checked:before,
+    .task-list-item input[checked]:before {
+        color: inherit;
+    }
+
+    .md-task-list-item>input {
+        top: auto;
+        margin-left: -1.1em;
+        font-size: 1.3em;
+        margin-top: 0px;
+        -webkit-appearance: none;
+    }
+
+    .md-task-list-item input:before {
+        content: '\2610';
+        display: inline-block;
+        width: 1.25rem;
+        height: 1.6rem;
+        vertical-align: middle;
+        text-align: center;
+        color: #bbb;
+        background-color: inherit;
+    }
+
+    .md-task-list-item input:checked:before,
+    .md-task-list-item input[checked]:before {
+        color: inherit;
+        content: '\2611';
+    }
+
+    .task-list-item {
+        padding-left: 1.5em;
+    }
+
+    blockquote {
+        font-style: italic;
+        padding: 0.25em 24px;
+        position: relative;
+        color: #383838;
+        border-left: 2px solid;
+
+    }
+
+    #write>blockquote {
+        padding: 0.25em 30px;
+        margin-left: -32px;
+        width: calc(100% + 32px);
+    }
+
+    #write>.md-fences-with-lineno {
+        margin-left: -33px;
+        color: black;
+    }
+
+    .CodeMirror-linenumber {
+        min-width: 25px;
+    }
+
+    .md-header {
+        font-size: inherit !important;
+    }
+
+    /*blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a;
+}*/
+
+
+    .typora-export li,
+    .typora-export p,
+    .typora-export,
+    .footnote-line {
+        white-space: normal;
+    }
+    </style>
+</head>
+
+<body class='typora-export'>
+    <div id='write' class='is-mac'>
+        <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="outline/outline.js"></script>
+        <link rel="stylesheet" type="text/css" href="outline/outline.css">
+        <h1><a name="a-survey-on-application-of-knowledge-graph" class="md-header-anchor"></a><span>A Survey on Application of Knowledge Graph</span></h1>
+        <p>&nbsp;</p>
+        <h2><a name="knowledge-bases" class="md-header-anchor"></a><span>Knowledge Bases</span></h2>
+        <ol start=''>
+            <li>
+                <p><strong><span>DBpedia</span></strong></p>
+                <p><strong><span>DBpedia-A crystallization point for the Web of Data.</span></strong><span> </span><em><span>Christian Bizer, et al.</span></em><span> Web Semantics: Science, Services and Agents on the World Wide Web 2009. </span><a href='https://www.sciencedirect.com/science/article/pii/S1570826809000225'><span>[Paper]</span></a></p>
+            </li>
+            <li>
+                <p><strong><span>YAGO</span></strong></p>
+                <p><strong><span>Yago: A large ontology from wikipedia and wordnet.</span></strong><span> </span><em><span>Fabian M. Suchanek, Gjergji Kasneci, and Gerhard Weikum.</span></em><span> Web Semantics: Science, Services and Agents on the World Wide Web 2008. </span><a href='https://www.sciencedirect.com/science/article/pii/S1570826808000437'><span>[Paper]</span></a></p>
+            </li>
+            <li>
+                <p><strong><span>Wikidata</span></strong><span> </span><a href='https://www.wikidata.org/wiki/Wikidata:Main_Page'><span>[Website]</span></a></p>
+            </li>
+            <li>
+                <p><strong><span>Freebase</span></strong></p>
+                <p><strong><span>Freebase: A shared database of structured general human knowledge.</span></strong><span> </span><em><span>Kurt Bollacker, Robert Cook, and Patrick Tufts.</span></em><span> AAAI 2007. </span><a href='https://www.aaai.org/Papers/AAAI/2007/AAAI07-355.pdf'><span>[Paper]</span></a></p>
+            </li>
+        </ol>
+        <p>&nbsp;</p>
+        <h2><a name="construction-techniques" class="md-header-anchor"></a><span>Construction Techniques</span></h2>
+        <ol start=''>
+            <li><strong><span>Knowledge graph construction techniques. (Chinese)</span></strong><span> </span><em><span>Qiao Liu, Yang Li, Hong Duan, Yao Liu, Zhiguang Qing.</span></em><span> Journal of Computer Research and Development (计算机研究与发展) 2016. </span><a href='http://crad.ict.ac.cn/CN/abstract/abstract3127.shtml#'><span>[Paper]</span></a></li>
+            <li><strong><span>Review on knowledge graph techniques. (Chinese)</span></strong><span> </span><em><span>Zenglin Xu, Yongpan Sheng, Lirong He, Yafang Wang.</span></em><span> Journal of University of Electronic Science and Technology of China (电子科技大学学报) 2016. </span><a href='http://www.cnki.com.cn/Article/CJFDTotal-DKDX201604012.htm'><span>[Paper]</span></a></li>
+            <li><strong><span>Architecture of Knowledge Graph Construction Technique.</span></strong><span> </span><em><span>Zhao, Zhanfang, Sung-Kook Han, and In-Mi So.</span></em><span> International Journal of Pure and Applied Mathematics 2018. </span><a href='https://acadpubl.eu/jsi/2018-118-19/articles/19b/24.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h2><a name="application" class="md-header-anchor"></a><span>Application</span></h2>
+        <h3><a name="question-answering-system" class="md-header-anchor"></a><span>Question Answering System</span></h3>
+        <h4><a name="datasets" class="md-header-anchor"></a><span>Datasets</span></h4>
+        <ol start=''>
+            <li>
+                <p><strong><span>WebQuestion</span></strong></p>
+                <p><strong><span>Semantic parsing on freebase from question-answer pairs.</span></strong><span> </span><em><span>Jonathan Berant, et al.</span></em><span> EMNLP 2013. </span><a href='https://www.aclweb.org/anthology/D13-1160'><span>[Paper]</span></a></p>
+            </li>
+            <li>
+                <p><strong><span>SimpleQuestion</span></strong></p>
+                <p><strong><span>Large-scale simple question answering with memory networks.</span></strong><span> </span><em><span>Antoine Bordes, et al.</span></em><span> arXiv 2015. </span><a href='https://arxiv.org/pdf/1506.02075.pdf'><span>[Paper]</span></a></p>
+            </li>
+        </ol>
+        <p>&nbsp;</p>
+        <h4><a name="industry" class="md-header-anchor"></a><span>Industry</span></h4>
+        <ol start=''>
+            <li><strong><span>Building Watson: An overview of the DeepQA project.</span></strong><span> </span><em><span>David Ferrucci, Eric Brown, Jennifer Chu-Carroll, et al.</span></em><span> AI Magazine 2010. </span><a href='https://www.aaai.org/ojs/index.php/aimagazine/article/view/2303/2165'><span>[Paper]</span></a></li>
+            <li><strong><span>The Design and Implementation of XiaoIce, an Empathetic Social Chatbot.</span></strong><span> </span><em><span>Li Zhou, Jianfeng Gao, Di Li, Heung-Yeung Shum.</span></em><span> arXiv 2018. </span><a href='https://arxiv.org/pdf/1812.08989.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h4><a name="semantic-parsing-based" class="md-header-anchor"></a><span>Semantic Parsing Based</span></h4>
+        <ol start=''>
+            <li><strong><span>Semantic parsing on freebase from question-answer pairs.</span></strong><span> </span><em><span>Jonathan Berant, Andrew Chou, Roy Frostig Percy Liang.</span></em><span> EMNLP 2013. </span><a href='https://www.aclweb.org/anthology/D13-1160'><span>[Paper]</span></a></li>
+            <li><strong><span>Open question answering over curated and extracted knowledge bases.</span></strong><span> </span><em><span>Anthony Fader, Luke Zettlemoyer, and Oren Etzioni.</span></em><span> KDD 2014. </span><a href='https://homes.cs.washington.edu/~lsz/papers/fze-kdd14.pdf'><span>[Paper]</span></a><span> </span><a href='https://github.com/afader/oqa'><span>[Code]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h4><a name="information-retrievaling-based" class="md-header-anchor"></a><span>Information Retrievaling Based</span></h4>
+        <ol start=''>
+            <li><strong><span>Information extraction over structured data: Question answering with freebase.</span></strong><span> </span><em><span>Xuchen Yao, and Benjamin Van Durme.</span></em><span> ACl 2014. </span><a href='http://cs.jhu.edu/~xuchen/paper/yao-jacana-freebase-acl2014.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h4><a name="embedding-based" class="md-header-anchor"></a><span>Embedding Based</span></h4>
+        <ol start=''>
+            <li><strong><span>Question answering with subgraph embeddings.</span></strong><span> </span><em><span>Antoine Bordes, Sumit Chopra, and Jason Weston.</span></em><span> EMNLP 2014. </span><a href='https://www.aclweb.org/anthology/D14-1067'><span>[Paper]</span></a></li>
+            <li><strong><span>Joint relational embeddings for knowledge-based question answering.</span></strong><span> </span><em><span>Min-Chul Yang, et al.</span></em><span> EMNLP 2014. </span><a href='https://www.aclweb.org/anthology/D14-1071'><span>[Paper]</span></a></li>
+            <li><strong><span>Open question answering with weakly supervised embedding models.</span></strong><span> </span><em><span>Antoine Bordes, Jason Weston, and Nicolas Usunier.</span></em><span> ECML PKDD 2014. </span><a href='https://arxiv.org/pdf/1404.4326.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h4><a name="deep-learning" class="md-header-anchor"></a><span>Deep Learning</span></h4>
+        <ol start=''>
+            <li><strong><span>Question answering over freebase with multi-column convolutional neural networks.</span></strong><span> </span><em><span>Li Dong, et al.</span></em><span> IJCNLP 2015. </span><a href='https://www.aclweb.org/anthology/P15-1026'><span>[Paper]</span></a></li>
+            <li><strong><span>An end-to-end model for question answering over knowledge base with cross-attention combining global knowledge.</span></strong><span> </span><em><span>Yanchao Hao, et al.</span></em><span> ACL 2017. </span><a href='https://www.aclweb.org/anthology/P17-1021'><span>[Paper]</span></a></li>
+            <li><strong><span>Semantic parsing via staged query graph generation: Question answering with knowledge base.</span></strong><span> </span><em><span>Scott Wen-tau Yih, et al.</span></em><span> IJCNLP 2015. </span><a href='https://www.aclweb.org/anthology/P15-1128'><span>[Paper]</span></a></li>
+            <li><strong><span>Question answering over knowledge base with neural attention combining global knowledge information.</span></strong><span> </span><em><span>Yuanzhe Zhang, et al.</span></em><span> ACL 2016. </span><a href='https://arxiv.org/pdf/1606.00979.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>A knowledge-grounded neural conversation model.</span></strong><span> </span><em><span>Marjan Ghazvininejad, et al.</span></em><span> AAAI 2018. </span><a href='https://www.microsoft.com/en-us/research/wp-content/uploads/2017/02/A_Knowledge_Grounded_Neural_Conversation_Model.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Key-value memory networks for directly reading documents.</span></strong><span> </span><em><span>Alexander Miller, et al.</span></em><span> ACL 2016. </span><a href='https://aclweb.org/anthology/D16-1147'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h4><a name="more-complex-qa-tasks" class="md-header-anchor"></a><span>More Complex QA Tasks</span></h4>
+        <ol start=''>
+            <li><strong><span>Commonsense for Generative Multi-Hop Question Answering Tasks.</span></strong><span> </span><em><span>Lisa Bauer, Yicheng Wang, and Mohit Bansal.</span></em><span> EMNLP 2018. </span><a href='https://aclweb.org/anthology/D18-1454'><span>[Paper]</span></a><span> </span><a href='https://github.com/yicheng-w/CommonSenseMultiHopQA'><span>[Code]</span></a></li>
+            <li><strong><span>TEQUILA: Temporal Question Answering over Knowledge Bases.</span></strong><span> </span><em><span>Zhen Jia, et al.</span></em><span> CIKM 2018. </span><a href='http://qa.mpi-inf.mpg.de/tequila/p1807-jia.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Generating factoid questions with recurrent neural networks: The 30m factoid question-answer corpus.</span></strong><span> </span><em><span>Iulian Vlad Serban, et al.</span></em><span> ACL 2016. </span><a href='https://www.aclweb.org/anthology/P16-1056'><span>[Paper]</span></a></li>
+            <li><strong><span>Transliteration Better than Translation? Answering Code-mixed Questions over a Knowledge Base.</span></strong><span> </span><em><span>Vishal Gupta, Manoj Chinnakotla, and Manish Shrivastava.</span></em><span> CALCS 2018. </span><a href='https://www.aclweb.org/anthology/W18-3205'><span>[Paper]</span></a></li>
+            <li><strong><span>KG^ 2: Learning to Reason Science Exam Questions with Contextual Knowledge Graph Embeddings.</span></strong><span> </span><em><span>Yuyu Zhang, et al.</span></em><span> arXiv 2018. </span><a href='https://arxiv.org/pdf/1805.12393.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h3><a name="recommender-system" class="md-header-anchor"></a><span>Recommender System</span></h3>
+        <h4><a name="embedding-based" class="md-header-anchor"></a><span>Embedding Based</span></h4>
+        <ol start=''>
+            <li><strong><span>DKN: Deep knowledge-aware network for news recommendation.</span></strong><span> </span><em><span>Hongwei Wang, et al.</span></em><span> WWW 2018. </span><a href='https://arxiv.org/pdf/1801.08284.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Collaborative knowledge base embedding for recommender systems.</span></strong><span> </span><em><span>Fuzheng Zhang, et al.</span></em><span> KDD 2016. </span><a href='https://www.kdd.org/kdd2016/papers/files/adf0066-zhangA.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Shine: Signed heterogeneous information network embedding for sentiment link prediction.</span></strong><span> </span><em><span>Hongwei Wang, et al.</span></em><span> WSDM 2018. </span><a href='https://arxiv.org/pdf/1712.00732.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Multi-Task Feature Learning for Knowledge Graph Enhanced Recommendation.</span></strong><span> </span><em><span>Hongwei Wang, et al.</span></em><span> WWW 2019. </span><a href='https://arxiv.org/pdf/1901.08907.pdf'><span>[Paper]</span></a><span> </span><a href='https://github.com/hwwang55/MKR'><span>[Code]</span></a></li>
+            <li><strong><span>Auto-encoding user ratings via knowledge graphs in recommendation scenarios.</span></strong><span> </span><em><span>Vito Bellini, et al.</span></em><span> DLRS 2017. </span><a href='https://arxiv.org/pdf/1706.07956.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h4><a name="path-based" class="md-header-anchor"></a><span>Path Based</span></h4>
+        <ol start=''>
+            <li><strong><span>Personalized entity recommendation: A heterogeneous information network approach.</span></strong><span> </span><em><span>Xiao Yu, et al.</span></em><span> WSDM 2014. </span><a href='http://hanj.cs.illinois.edu/pdf/wsdm14_xyu.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Meta-graph based recommendation fusion over heterogeneous information networks.</span></strong><span> </span><em><span>Huan Zhao, et al.</span></em><span> KDD 2017. </span><a href='http://www.cse.ust.hk/~yqsong/papers/2017-KDD-HINRec-FMG.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Explainable Reasoning over Knowledge Graphs for Recommendation.</span></strong><span> </span><em><span>Xiang Wang, et al.</span></em><span> AAAI 2019. </span><a href='https://arxiv.org/pdf/1811.04540.pdf'><span>[Paper]</span></a><span> </span><a href='https://github.com/eBay/KPRN'><span>[Code]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h4><a name="others" class="md-header-anchor"></a><span>Others</span></h4>
+        <ol start=''>
+            <li><strong><span>RippleNet: Propagating user preferences on the knowledge graph for recommender systems.</span></strong><span> </span><em><span>Hongwei Wang, et al.</span></em><span> CIKM 2018. </span><a href='https://arxiv.org/pdf/1803.03467.pdf'><span>[Paper]</span></a><span> </span><a href='https://github.com/hwwang55/RippleNet'><span>[Code]</span></a></li>
+            <li><strong><span>Unifying Knowledge Graph Learning and Recommendation: Towards a Better Understanding of User Preferences.</span></strong><span> WWW 2019. </span><a href='https://arxiv.org/pdf/1902.06236.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h3><a name="information-retrieval" class="md-header-anchor"></a><span>Information Retrieval</span></h3>
+        <ol start=''>
+            <li><strong><span>Entity query feature expansion using knowledge base links.</span></strong><span> </span><em><span>Jeffrey Dalton, Laura Dietz, and James Allan.</span></em><span> SIGIR 2014. </span><a href='https://ciir-publications.cs.umass.edu/pub/web/getpdf.php?id=1143'><span>[Paper]</span></a></li>
+            <li><strong><span>Latent entity space: a novel retrieval approach for entity-bearing queries.</span></strong><span> </span><em><span>Xitong Liu, and Hui Fang.</span></em><span> Information Retrieval Journal 2015. </span><a href='https://link.springer.com/article/10.1007/s10791-015-9267-x'><span>[Paper]</span></a></li>
+            <li><strong><span>Esdrank: Connecting query and documents through external semi-structured data.</span></strong><span> </span><em><span>Chenyan Xiong, and Jamie Callan.</span></em><span> CIKM 2015. </span><a href='https://www.cs.cmu.edu/~callan/Papers/cikm15-cx.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Word-entity duet representations for document ranking.</span></strong><span> </span><em><span>Chenyan Xiong, Jamie Callan, and Tie-Yan Liu.</span></em><span> SIGIR 2017. </span><a href='https://arxiv.org/pdf/1706.06636.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Bag-of-Entities representation for ranking.</span></strong><span> </span><em><span>Chenyan Xiong, Jamie Callan, and Tie-Yan Liu.</span></em><span> ICTIR 2016. </span><a href='http://www.cs.cmu.edu/~cx/papers/Bag_of_Entities_Representation_for_Ranking.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Document retrieval using entity-based language models.</span></strong><span> </span><em><span>Hadas Raviv, Oren Kurland, and David Carmel.</span></em><span> SIGIR 2016. </span><a href='https://iew3.technion.ac.il/~kurland/p65-raviv.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Document retrieval model through semantic linking.</span></strong><span> </span><em><span>Faezeh Ensan, and Ebrahim Bagheri.</span></em><span> WSDM 2017. </span><a href='https://dl.acm.org/citation.cfm?id=3018692'><span>[Paper]</span></a></li>
+            <li><strong><span>Entity-Duet Neural Ranking: Understanding the Role of Knowledge Graph Semantics in Neural Information Retrieval.</span></strong><span> </span><em><span>Zhenghao Liu, et al.</span></em><span> ACL 2018. </span><a href='https://aclweb.org/anthology/P18-1223'><span>[Paper]</span></a><span> </span><a href='https://github.com/thunlp/EntityDuetNeuralRanking'><span>[Code]</span></a></li>
+            <li><strong><span>Explicit semantic ranking for academic search via knowledge graph embedding.</span></strong><span> </span><em><span>Chenyan Xiong, Russell Power, and Jamie Callan.</span></em><span> WWW 2017. </span><a href='https://ai2-website.s3.amazonaws.com/publications/Explicit_Semantic_Ranking.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h3><a name="domain-specific" class="md-header-anchor"></a><span>Domain-Specific</span></h3>
+        <h4><a name="biomedical" class="md-header-anchor"></a><span>Biomedical</span></h4>
+        <ol start=''>
+            <li><strong><span>Knowlife: a knowledge graph for health and life sciences.</span></strong><span> </span><em><span>Patrick Ernst, et al.</span></em><span> ICDE 2014. </span><a href='https://ieeexplore.ieee.org/document/6816754'><span>[Paper]</span></a></li>
+            <li><strong><span>Semantic health knowledge graph: Semantic integration of heterogeneous medical knowledge and services.</span></strong><span> </span><em><span>Longxiang Shi, et al.</span></em><span> BioMed research international 2017. </span><a href='https://www.hindawi.com/journals/bmri/2017/2858423/'><span>[Paper]</span></a></li>
+            <li><strong><span>Automatic generation of a qualified medical knowledge graph and its usage for retrieving patient cohorts from electronic medical records.</span></strong><span> </span><em><span>Travis Goodwin, and Sanda M. Harabagiu.</span></em><span> ICSC 2013. </span><a href='https://www.hindawi.com/journals/bmri/2017/2858423/'><span>[Paper]</span></a></li>
+            <li><strong><span>Learning a health knowledge graph from electronic medical records.</span></strong><span> </span><em><span>Maya Rotmensch, et al.</span></em><span> Scientific Reports 2017. </span><a href='https://www.nature.com/articles/s41598-017-05778-z'><span>[Paper]</span></a></li>
+        </ol>
+        <h4><a name="cyber-security" class="md-header-anchor"></a><span>Cyber Security</span></h4>
+        <ol start=''>
+            <li><strong><span>A Practical Approach to Constructing a Knowledge Graph for Cybersecurity.</span></strong><span> </span><em><span>Yan Jia, et al.</span></em><span> Engineering 2018. </span><a href='https://www.sciencedirect.com/science/article/pii/S2095809918301097'><span>[Paper]</span></a></li>
+            <li><strong><span>Developing an Ontology for Cyber Security Knowledge Graphs.</span></strong><span> </span><em><span>Michael D Iannacone, et al.</span></em><span> CISR 2015. </span><a href='https://dl.acm.org/citation.cfm?doid=2746266.2746278'><span>[Paper]</span></a></li>
+            <li><strong><span>Association Analysis Algorithm Based on Knowledge Graph for SPACE-Ground Integrated Network.</span></strong><span> </span><em><span>Yulu Qi, et al.</span></em><span> ICCT 2018. </span><a href='https://ieeexplore.ieee.org/abstract/document/8600234'><span>[Paper]</span></a></li>
+            <li><strong><span>ISEK: An information security knowledge graph for CISP knowledge system.</span></strong><span> </span><em><span>Yuangang Yao, et al.</span></em><span> ICITCS 2015. </span><a href='https://ieeexplore.ieee.org/abstract/document/7292991'><span>[Paper]</span></a></li>
+            <li><strong><span>Powering filtration process of cyber security ecosystem using knowledge graph.</span></strong><span> </span><em><span>Claude Asamoah, et al.</span></em><span> CSCloud 2016. </span><a href='https://ieeexplore.ieee.org/abstract/document/7545925/'><span>[Paper]</span></a></li>
+        </ol>
+        <h4><a name="financial" class="md-header-anchor"></a><span>Financial</span></h4>
+        <ol start=''>
+            <li><strong><span>Combining Enterprise Knowledge Graph and News Sentiment Analysis for Stock Price Volatility Prediction.</span></strong><span> </span><em><span>Jue Liu, Zhuocheng Lu, and Wei Du.</span></em><span> HICSS 2019. </span><a href='https://scholarspace.manoa.hawaii.edu/bitstream/10125/59565/0125.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Cyber incident classifications using ontology-based knowledge representation for cybersecurity insurance in financial industry.</span></strong><span> </span><em><span>Sam Adam Elnagdy, Meikang Qiu, and Keke Gai.</span></em><span> CSCloud 2016. </span><a href='https://ieeexplore.ieee.org/abstract/document/7545936/'><span>[Paper]</span></a></li>
+            <li><strong><span>Understanding taxonomy of cyber risks for cybersecurity insurance of financial industry in cloud computing.</span></strong><span> </span><em><span>Sam Adam Elnagdy, Meikang Qiu, and Keke Gai.</span></em><span> CSCloud 2016. </span><a href='https://ieeexplore.ieee.org/abstract/document/7545935/'><span>[Paper]</span></a></li>
+            <li><strong><span>Constructing Knowledge Graphs with Trust.</span></strong><span> </span><em><span>Brian Ulicny.</span></em><span> METHOD 2015. </span><a href='https://www.researchgate.net/profile/Brian_Ulicny/publication/283500696_Constructing_Knowledge_Graphs_with_Trust/links/563b657308ae45b5d2867e2e.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <h4><a name="news" class="md-header-anchor"></a><span>News</span></h4>
+        <ol start=''>
+            <li><strong><span>DKN: Deep knowledge-aware network for news recommendation.</span></strong><span> </span><em><span>Hongwei Wang, et al.</span></em><span> WWW 2018. </span><a href='https://arxiv.org/pdf/1801.08284.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Searching News Articles Using an Event Knowledge Graph Leveraged by Wikidata.</span></strong><span> </span><em><span>Charlotte Rudnik, et al.</span></em><span> Wiki Workshop 2019. </span><a href='https://arxiv.org/pdf/1904.05557.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Fact checking in heterogeneous information networks.</span></strong><span> </span><em><span>Baoxu Shi, and Tim Weninger.</span></em><span> WWW 2016. </span><a href='https://pdfs.semanticscholar.org/0ec3/89be2af8febd9612cc852e6894c930f299c5.pdf'><span>[Paper]</span></a></li>
+            <li><strong><span>Building event-centric knowledge graphs from news.</span></strong><span> </span><em><span>Marco Rospocher, et al.</span></em><span> Journal of Web Semantics 2016. </span><a href='https://www.sciencedirect.com/science/article/pii/S1570826815001456'><span>[Paper]</span></a></li>
+            <li><strong><span>Computational fact checking from knowledge networks.</span></strong><span> </span><em><span>Giovanni Luca Ciampaglia, et al.</span></em><span> PLoS ONE 2015. </span><a href='https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0128193'><span>[Paper]</span></a></li>
+            <li><strong><span>Fake News Detection on Social Media: A Data Mining Perspective.</span></strong><span> </span><em><span>Kai Shu, et al.</span></em><span> SIGKDD 2017. </span><a href='https://www.kdd.org/exploration_files/19-1-Article2.pdf'><span>[Paper]</span></a></li>
+        </ol>
+        <h4><a name="geoscience" class="md-header-anchor"></a><span>Geoscience</span></h4>
+        <ol start=''>
+            <li><strong><span>Information extraction and knowledge graph construction from geoscience literature.</span></strong><span> </span><em><span>Chengbin Wang, et al.</span></em><span> Computers &amp; Geosciences 2018. </span><a href='https://www.sciencedirect.com/science/article/pii/S0098300417309020'><span>[Paper]</span></a></li>
+            <li><strong><span>Intelligent learning for knowledge graph towards geological data.</span></strong><span> </span><em><span>Yueqin Zhu, et al.</span></em><span> Scientific Programming 2017. </span><a href='https://www.hindawi.com/journals/sp/2017/5072427/'><span>[Paper]</span></a></li>
+        </ol>
+        <h4><a name="education" class="md-header-anchor"></a><span>Education</span></h4>
+        <ol start=''>
+            <li><strong><span>KnowEdu: A System to Construct Knowledge Graph for Education.</span></strong><span> </span><em><span>Penghe Chen, et al.</span></em><span> IEEE Access 2018. </span><a href='https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8362657&amp;tag=1'><span>[Paper]</span></a></li>
+            <li><strong><span>Knowledge graph-based teacher support for learning material authoring.</span></strong><span> </span><em><span>Christian Grévisse, et al.</span></em><span> CCC 2018. </span><a href='https://link.springer.com/chapter/10.1007/978-3-319-98998-3_14'><span>[Paper]</span></a></li>
+            <li><strong><span>Visualization for Knowledge Graph Based on Education Data.</span></strong><span> </span><em><span>Kai Sun, et al.</span></em><span> IJSI 2016. </span><a href='http://ijsi.alljournals.cn/ch/reader/create_pdf.aspx?file_no=i227&amp;flag=1&amp;journal_id=ijsi&amp;year_id=2016'><span>[Paper]</span></a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h3><a name="other-applications" class="md-header-anchor"></a><span>Other Applications</span></h3>
+        <h4><a name="social-network" class="md-header-anchor"></a><span>Social Network</span></h4>
+        <ol start=''>
+            <li><strong><span>Social network de-anonymization and privacy inference with knowledge graph model.</span></strong><span> </span><em><span>Jianwei Qian, et al.</span></em><span> IEEE TDSC 2017. </span><a href='https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=7911249'><span>[Paper]</span></a></li>
+            <li><strong><span>De-anonymizing Social Networks and Inferring Private Attributes Using Knowledge Graphs.</span></strong><span> </span><em><span>Jianwei Qian, et al.</span></em><span> IEEE INFOCOM 2016. </span><a href='https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7524578'><span>[Paper]</span></a></li>
+        </ol>
+        <h4><a name="classification" class="md-header-anchor"></a><span>Classification</span></h4>
+        <ol start=''>
+            <li>
+                <p><strong><span>Sentiment Analysis</span></strong></p>
+                <p><strong><span>Targeted aspect-based sentiment analysis via embedding commonsense knowledge into an attentive LSTM.</span></strong><span> </span><em><span>Yukun Ma, Haiyun Peng, and Erik Cambria.</span></em><span> AAAI 2018. </span><a href='https://sentic.net/sentic-lstm.pdf'><span>[Paper]</span></a></p>
+            </li>
+            <li>
+                <p><strong><span>Image Classification</span></strong></p>
+                <p><strong><span>Knowledge Graph-Based Image Classification Refinement.</span></strong><span> </span><em><span>Dehai Zhang, et al.</span></em><span> IEEE Access 2019. </span><a href='https://ieeexplore.ieee.org/abstract/document/8698455'><span>[Paper]</span></a></p>
+            </li>
+            <li>
+                <p><strong><span>Text Classification</span></strong><span> </span></p>
+                <p><strong><span>Combining Knowledge with Deep Convolutional Neural Networks for Short Text Classification.</span></strong><span> </span><em><span>Jin Wang, et al.</span></em><span> IJCAI 2017. </span><a href='https://www.ijcai.org/proceedings/2017/0406.pdf'><span>[Paper]</span></a></p>
+            </li>
+        </ol>
+        <h4><a name="word-embedding" class="md-header-anchor"></a><span>Word Embedding</span></h4>
+        <ul>
+            <li><strong><span>RC-NET: A General Framework for Incorporating Knowledge into Word Representations.</span></strong><span> </span><em><span>Chang Xu, et al.</span></em><span> CIKM 2014. </span><a href='https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/5BCIKM20145D20RC-NET.pdf'><span>[Paper]</span></a></li>
+        </ul>
+        <h4><a name="combating-human-trafficking" class="md-header-anchor"></a><span>Combating Human Trafficking</span></h4>
+        <ul>
+            <li><strong><span>Building and using a knowledge graph to combat human trafficking.</span></strong><span> </span><em><span>Pedro Szekely, et al.</span></em><span> ISWC 2015. </span><a href='https://usc-isi-i2.github.io/papers/szekely15-iswc.pdf'><span>[Paper]</span></a></li>
+        </ul>
+    </div>
+</body>
+
+</html>
