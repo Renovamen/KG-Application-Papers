@@ -2,8 +2,6 @@
 
 [Better View](https://renovamen.github.io/KG-Application-Papers/)
 
-&nbsp;
-
 ## Knowledge Bases
 
 1. **DBpedia**
