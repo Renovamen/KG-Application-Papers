@@ -1,6 +1,10 @@
 # A Survey on Application of Knowledge Graph
 
-[Better View](https://renovamen.github.io/KG-Application-Papers/)
+The papers mentioned in paper **A Survey on Application of Knowledge Graph**. All papers can be found in `\papers`.
+
+[Better View](https://renovamen.ink/KG-Application-Papers/)
+
+&nbsp;
 
 ## Knowledge Bases
 
